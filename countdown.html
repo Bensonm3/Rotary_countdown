@@ -1,0 +1,74 @@
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<!-- Display the countdown timer in an element -->
+<!-- <p id="header">Countdown to Event</p> -->
+<p id="demo"></p>
+<style>
+        #demo {
+            font-size: 40px;
+            font-weight: 700;
+            color: #005d6f;
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+        /* #header {
+            font-size: 40px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        } */
+        body {
+            height: 55px;
+            overflow: hidden;
+        }
+</style>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Apr 09, 2021 15:30:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if(seconds == 1) {
+        second = " second "
+    } else {
+        second = " seconds "
+    }
+    if(days == 1) {
+        day = " day "
+    } else {
+        day = " days "
+    }
+    if(hours == 1) {
+        hour = " hour "
+    } else{
+        hour = " hours "
+    }
+    if(minutes == 1) {
+        minute = " minute "
+    } else {
+        minute = " minutes "
+    }
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML = days + day + hours + hour
+  + minutes + minute + seconds + second;
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "Time for the Gala!";
+  }
+}, 1000);
+</script>
